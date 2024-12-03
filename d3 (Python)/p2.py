@@ -12,7 +12,7 @@ sum:int = 0
 while True:
     instuction = re.search(pattern, data)
 
-    if instuction == None:
+    if instuction is None:
         break
 
     data = data[data.find(instuction.group()) + 4::]
