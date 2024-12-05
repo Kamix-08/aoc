@@ -3,14 +3,15 @@
 #include <fstream>
 #include <vector>
 #include <utility>
+#include <tuple>
 
 using namespace std;
 
-pair<vector<pair<int, int>>, vector<vector<int>>> readData()
+tuple<vector<pair<int, int>>, vector<vector<int>>> readData()
 {
     ifstream file("./d5.in");
 
-    bool mode = false;
+    bool mode = true;
 
     vector<pair<int, int>> ins;
     vector<vector<int>> upd;
@@ -18,7 +19,7 @@ pair<vector<pair<int, int>>, vector<vector<int>>> readData()
     string line;
     while(getline(file, line))
     {
-        if(line == "\n")
+        if(line == "")
         {
             mode = false;
             continue;
@@ -26,7 +27,7 @@ pair<vector<pair<int, int>>, vector<vector<int>>> readData()
 
         if(mode)
         {
-            ins.emplace_back(line.substr(0,2), line.substr(2));
+            ins.emplace_back(stoi(line.substr(0,2)), stoi(line.substr(3,2)));
             continue;
         }
         
@@ -37,5 +38,5 @@ pair<vector<pair<int, int>>, vector<vector<int>>> readData()
         upd.push_back(u);
     }
 
-    return make_pair(ins, upd);
+    return make_tuple(ins, upd);
 }

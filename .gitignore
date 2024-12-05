@@ -4,4 +4,6 @@
 
 *.exe
 *.in
+
 .DS_Store
+.vscode
