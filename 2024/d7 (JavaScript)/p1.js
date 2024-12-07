@@ -1,11 +1,12 @@
 import { readData } from './d7.js'
 
 function operator(i, res, inp, cur) {
-    if (cur == res)                   return true
-    if (i >= inp.length || cur > res) return false
+    if (cur == res && i == inp.length) return true
+    if (i >= inp.length || cur > res)  return false
 
     return operator(i+1, res, inp, cur + inp[i])
         || operator(i+1, res, inp, cur * inp[i])
+        || operator(i+1, res, inp, Number(cur.toString().concat(inp[i].toString()))) // p2
 }
 
 (async function main() {

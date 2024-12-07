@@ -13,4 +13,4 @@ async function readData() {
     return ret
 }
 
-export { readData };
+export { readData }
